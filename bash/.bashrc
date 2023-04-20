@@ -107,11 +107,11 @@ xinput list\
 }
 
 cmake-build() {
-if [[ ! -d build ]]; then
-	cmake -S. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Debug
-	cmake --build build
-fi
-ninja -C build
+  if [[ ! -d build ]]; then
+    cmake -S. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+    cmake --build build
+  fi
+  ninja -C build
 }
 
 cmake-release() {
